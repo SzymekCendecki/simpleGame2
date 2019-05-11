@@ -1,5 +1,7 @@
 //main styles
 
+//intro - zmodyfikowany (?) kod ze strony https://codemyui.com/spinning-ring-text-pure-css/
+
 *{
   margin: 0;
   padding: 0;
@@ -7,7 +9,6 @@
 
 body{
   margin: 0 auto;
-  position: relative;
 }
 
 html, body{
@@ -17,18 +18,16 @@ html, body{
 
 header, footer{
   height: 10%;
+  font-weight: bold;
 }
 
 #mainContainer{
+  margin: 0 auto;
   height: 80%;
 }
 
 .titleSize{
   font-size: 200%;
-}
-
-.bold{
-  font-weight: bold;
 }
 
 .italic{
@@ -43,26 +42,68 @@ header, footer{
   justify-items: center;
 }
 
-.bckgAnim{
-  animation: bckgColors 10s infinite;
+ul {
+  margin: 0;
+  list-style: none;
+  transform-style: preserve-3d;
+  animation: three-dimensions-circle 30s linear infinite;
 }
 
-@keyframes bckgColors{
-  0%{background: rgb(random(255), random(255), random(255));}
-  25%{background: rgb(random(255), random(255), random(255));}
-  50%{background: rgb(random(255), random(255), random(255));}
-  75%{background: rgb(random(255), random(255), random(255));}
-  100%{background: rgb(random(255), random(255), random(255));}
+li {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bold;
+  font-family: 'Alfa Slab One', cursive;
 }
 
+@for $i from 1 through 11 {
+  li:nth-child(#{$i}) {
+    transform: translate(-50%, -50%) rotate(#{$i * 30 - 30}deg) translateY(-130px) rotateX(90deg);
+  }
+}
+
+@keyframes three-dimensions-circle {
+  0% {
+    transform: rotateX(-100deg) rotate(0);
+    color: red;
+  }
+  25%{ color: green; }
+  50%{ color: blue;  }
+  75%{ color: yellow; }
+  100% {
+    transform: rotateX(-100deg) rotate(-360deg);
+    color: red;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  @for $i from 1 through 11 {
+    li:nth-child(#{$i}) {
+      transform: translate(-50%, -50%) rotate(#{$i * 30 - 30}deg) translateY(-180px) rotateX(90deg);
+    }
+  }
+}
 
 @media screen and (min-width: 640px) {
+  @for $i from 1 through 11 {
+    li:nth-child(#{$i}) {
+      transform: translate(-50%, -50%) rotate(#{$i * 30 - 30}deg) translateY(-210px) rotateX(90deg);
+    }
+  }
   .titleSize{
     font-size: 300%;
   }
 }
 
 @media screen and (min-width: 1024px) {
+
+  @for $i from 1 through 11 {
+    li:nth-child(#{$i}) {
+      transform: translate(-50%, -50%) rotate(#{$i * 30 - 30}deg) translateY(-230px) rotateX(90deg);
+    }
+  }
+
   .titleSize{
     font-size: 400%;
   }
