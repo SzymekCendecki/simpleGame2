@@ -78,8 +78,8 @@ module.exports = __webpack_require__(1);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    $("#title").on("click", function () {
-        $("body").removeClass('bckgAnim');
+    $("#start").on("click", function () {
+        $("#title, #start").hide();
     });
 });
 

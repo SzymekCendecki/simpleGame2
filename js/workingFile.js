@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    $("#title").on("click", ()=>{
-        $("body").removeClass('bckgAnim');
+    $("#start").on("click", ()=>{
+        $("#title, #start").hide();
     });
 });
