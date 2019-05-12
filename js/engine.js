@@ -78,8 +78,11 @@ module.exports = __webpack_require__(1);
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    $("#left, #right").hide();
+
     $("#start").on("click", function () {
         $("#title, #start").hide();
+        $("#left, #right").show();
     });
 });
 
