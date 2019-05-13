@@ -78,11 +78,31 @@ module.exports = __webpack_require__(1);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    $("#left, #right").hide();
+    $("#left, #right, #hexs").hide();
 
     $("#start").on("click", function () {
         $("#title, #start").hide();
-        $("#left, #right").show();
+        $("#left, #right, #hexs").show();
+
+        var allRects = document.querySelectorAll('#hexs > div');
+        console.log(allRects);
+
+        $(".rect").css("opacity", "0");
+
+        var x = Math.round(Math.random() * 50);
+        console.log(x);
+
+        $("#" + x).css("opacity", "1");
+
+        for (var i = 0; i < allRects.length; i++) {
+            allRects[i].onclick = function () {
+                console.log(this);
+                $(this).css("opacity", "0");
+                var x = Math.round(Math.random() * 50);
+                console.log(x);
+                $("#" + x).css("opacity", "1");
+            };
+        }
     });
 });
 

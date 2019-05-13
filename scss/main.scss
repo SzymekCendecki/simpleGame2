@@ -159,6 +159,27 @@ span{
   text-align: center;
 }
 
+.noClick{
+  display: none;
+}
+
+//css dla siatki pól
+#hexs{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.rect{
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
 //css dla rozdzielczości
 @media screen and (min-width: 500px) {
 
@@ -171,7 +192,6 @@ span{
   #start{
     width: 25%;
     height: 10%;
-   
   }
 }
 
@@ -189,6 +209,12 @@ span{
     width: 20%;
     height: 10%;
     margin: 25% 0 0 0;
+  }
+
+  .rect{
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
   }
 }
 
@@ -208,5 +234,11 @@ span{
     width: 15%;
     height: 10%;
     margin: 15% 0 0 0;
+  }
+
+  .rect{
+    width: 75px;
+    height: 75px;
+    border: 1px solid black;
   }
 }
