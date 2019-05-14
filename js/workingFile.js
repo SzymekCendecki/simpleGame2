@@ -5,23 +5,19 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#title, #start").hide();
         $("#left, #right, #hexs").show();
 
-        const allRects = document.querySelectorAll('#hexs > div'); 
-        console.log(allRects);
-    
-        $(".rect").css("opacity", "0");
+        const allRects = document.querySelectorAll('#hexs > button'); 
+        $(".rect").css("opacity", "0").prop("disabled", true);
 
-        let x = Math.round(Math.random()*50);
-        console.log(x);
+        let x = Math.round(Math.random()*50+1);
+        $("#"+x).css("opacity", "1").prop("disabled", false);
 
-        $("#"+x).css("opacity", "1");
-        
-        for (let i=0; i<allRects.length; i++) {
-            allRects[i].onclick = function() {
-                console.log(this);
+        for (let i=0; i<allRects.length; i++){
+            allRects[i].onclick = function(){
                 $(this).css("opacity", "0");
-                let x = Math.round(Math.random()*50);
-                console.log(x);
+                $(this).prop("disabled", true);
+                let x = Math.round(Math.random()*50+1);
                 $("#"+x).css("opacity", "1");
+                $("#"+x).prop("disabled", false);
             }
         }
     });
