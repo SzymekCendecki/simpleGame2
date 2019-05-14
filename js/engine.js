@@ -85,16 +85,17 @@ document.addEventListener("DOMContentLoaded", function () {
         $("#left, #right, #hexs").show();
 
         var allRects = document.querySelectorAll('#hexs > button');
+        console.log(allRects);
         $(".rect").css("opacity", "0").prop("disabled", true);
 
-        var x = Math.round(Math.random() * 50 + 1);
+        var x = Math.floor(Math.random() * 50);
         $("#" + x).css("opacity", "1").prop("disabled", false);
 
         for (var i = 0; i < allRects.length; i++) {
             allRects[i].onclick = function () {
                 $(this).css("opacity", "0");
                 $(this).prop("disabled", true);
-                var x = Math.round(Math.random() * 50 + 1);
+                var x = Math.floor(Math.random() * 50);
                 $("#" + x).css("opacity", "1");
                 $("#" + x).prop("disabled", false);
             };
