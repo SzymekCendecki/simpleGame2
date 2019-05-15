@@ -80,6 +80,22 @@ module.exports = __webpack_require__(1);
 document.addEventListener("DOMContentLoaded", function () {
     $("#left, #right, #hexs").hide();
 
+    var time = 60;
+    var counterPoints = 0;
+
+    function countDown(time) {
+        setInterval(function () {
+            if (time > 0) {
+                time--;
+                $("#leftTime").empty().append(time);
+            } else {
+                $("#leftTime").empty().append(0);
+                clearInterval(countDown);
+                $(".rect").hide();
+            }
+        }, 1000);
+    }
+
     $("#start").on("click", function () {
         $("#title, #start").hide();
         $("#left, #right, #hexs").show();
@@ -98,8 +114,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 var x = Math.floor(Math.random() * 50);
                 $("#" + x).css("opacity", "1");
                 $("#" + x).prop("disabled", false);
+
+                counterPoints = counterPoints + 1;
+                $("#rightPoints").empty().append(counterPoints);
             };
         }
+
+        countDown(time);
     });
 });
 
