@@ -160,6 +160,25 @@ span{
   display: none;
 }
 
+.pulseRed{
+  animation: pulseRed 1.5s infinite;
+}
+
+@keyframes pulseRed{
+  0%{ color:  #FF6666;}
+  50%{ color: #B20000; }
+  100%{ color:  #FF6666;}
+}
+
+#stage2{
+  z-index: 100;
+  position: absolute;
+  top: 45%;
+  left: 35%;
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 150%;
+}
+
 //css dla siatki pól
 #hexs{
   width: 100%;
@@ -218,6 +237,16 @@ span{
     width: 60px;
     height: 60px;
   }
+
+  #left, #right{
+    font-size: 135%;
+  }
+
+  #stage2{
+    top: 45%;
+    left: 40%;
+    font-size: 200%;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -241,5 +270,15 @@ span{
   .rect{
     width: 75px;
     height: 75px;
+  }
+
+  #left, #right{
+    font-size: 170%;
+  }
+
+  #stage2{
+    top: 45%;
+    left: 40%;
+    font-size: 300%;
   }
 }

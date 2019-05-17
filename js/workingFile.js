@@ -1,29 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
-    $("#left, #right, #hexs").hide();
+    $("#left, #right, #hexs, #stage2").hide();
 
-    let time = 60;
     let counterPoints = 0;
-
-    function countDown(time){
-        setInterval(()=>{
-            if(time > 0){
-                time--;
-                $("#leftTime").empty().append(time);
+    let stage = 1;
+    function countDown() {
+ 
+        var time = 61;
+        var id = setInterval(timeFn, 1000);
+        function timeFn() {
+          if (time == 0) {
+            clearInterval(id);
+            $("#leftTime").empty().append(time);
+            $(".rect").hide();
+            $("#stage2").show();
+            stage = stage + 1;
+          } else {
+            time--; 
+            if(time <=10){
+                $("#leftTime").addClass("pulseRed");
             }else{
-                $("#leftTime").empty().append(0);
-                clearInterval(countDown);
-                $(".rect").hide();
-               
+                $("#leftTime").removeClass("pulseRed");
             }
-        }, 1000);
-    }
-
-    $("#start").on("click", ()=>{
-        $("#title, #start").hide();
-        $("#left, #right, #hexs").show();
-
+            $("#leftTime").empty().append(time);
+         }
+        }
+      }
+      
+    function showBtns(){
         const allRects = document.querySelectorAll('#hexs > button'); 
-        console.log(allRects);
         $(".rect").css("opacity", "0").prop("disabled", true);
 
         let x = Math.floor(Math.random()*50);
@@ -38,11 +42,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 $("#"+x).prop("disabled", false);
 
                 counterPoints = counterPoints + 1;
-                  $("#rightPoints").empty().append(counterPoints);
+                $("#rightPoints").empty().append(counterPoints);
             }
         }
+    } 
 
-        countDown(time);
+    $("#start").on("click", ()=>{
+        $("#title, #start").hide();
+        $("#left, #right, #hexs").show();
+        showBtns();
+        countDown();
+    });
+
+    $("#stage2").on("click", ()=>{
+        console.log("działa");
+        $("#stage2").hide();
+        console.log(stage);
+        showBtns();
+        countDown();
+        $(".rect").show();
     });
 });
 

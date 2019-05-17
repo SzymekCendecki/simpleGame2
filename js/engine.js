@@ -78,30 +78,35 @@ module.exports = __webpack_require__(1);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    $("#left, #right, #hexs").hide();
+    $("#left, #right, #hexs, #stage2").hide();
 
-    var time = 60;
     var counterPoints = 0;
+    var stage = 1;
+    function countDown() {
 
-    function countDown(time) {
-        setInterval(function () {
-            if (time > 0) {
-                time--;
+        var time = 61;
+        var id = setInterval(timeFn, 1000);
+        function timeFn() {
+            if (time == 0) {
+                clearInterval(id);
                 $("#leftTime").empty().append(time);
-            } else {
-                $("#leftTime").empty().append(0);
-                clearInterval(countDown);
                 $(".rect").hide();
+                $("#stage2").show();
+                stage = stage + 1;
+            } else {
+                time--;
+                if (time <= 10) {
+                    $("#leftTime").addClass("pulseRed");
+                } else {
+                    $("#leftTime").removeClass("pulseRed");
+                }
+                $("#leftTime").empty().append(time);
             }
-        }, 1000);
+        }
     }
 
-    $("#start").on("click", function () {
-        $("#title, #start").hide();
-        $("#left, #right, #hexs").show();
-
+    function showBtns() {
         var allRects = document.querySelectorAll('#hexs > button');
-        console.log(allRects);
         $(".rect").css("opacity", "0").prop("disabled", true);
 
         var x = Math.floor(Math.random() * 50);
@@ -119,8 +124,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 $("#rightPoints").empty().append(counterPoints);
             };
         }
+    }
 
-        countDown(time);
+    $("#start").on("click", function () {
+        $("#title, #start").hide();
+        $("#left, #right, #hexs").show();
+        showBtns();
+        countDown();
+    });
+
+    $("#stage2").on("click", function () {
+        console.log("działa");
+        $("#stage2").hide();
+        console.log(stage);
+        showBtns();
+        countDown();
+        $(".rect").show();
     });
 });
 
