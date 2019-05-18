@@ -78,20 +78,25 @@ module.exports = __webpack_require__(1);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    $("#left, #right, #hexs, #stage2").hide();
+    $("#left, #right, #hexs, #stage2, #stage3, #stage4, #stage5").hide();
 
     var counterPoints = 0;
-    var stage = 1;
+    var stage = 2;
+
     function countDown() {
 
         var time = 61;
         var id = setInterval(timeFn, 1000);
         function timeFn() {
-            if (time == 0) {
+            if (stage == 6 && time == 0) {
+                console.log("koniec gry");
+                clearInterval(id);
+                $(".rect").hide();
+            } else if (time == 0) {
                 clearInterval(id);
                 $("#leftTime").empty().append(time);
                 $(".rect").hide();
-                $("#stage2").show();
+                $("#stage" + stage).show();
                 stage = stage + 1;
             } else {
                 time--;
@@ -133,14 +138,19 @@ document.addEventListener("DOMContentLoaded", function () {
         countDown();
     });
 
-    $("#stage2").on("click", function () {
-        console.log("działa");
-        $("#stage2").hide();
-        console.log(stage);
-        showBtns();
-        countDown();
-        $(".rect").show();
-    });
+    function stages(zzz) {
+        zzz.on("click", function () {
+            zzz.hide();
+            showBtns();
+            countDown();
+            $(".rect").show();
+        });
+    }
+
+    stages($("#stage2"));
+    stages($("#stage3"));
+    stages($("#stage4"));
+    stages($("#stage5"));
 });
 
 /***/ })

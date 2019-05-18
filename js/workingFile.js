@@ -1,31 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
-    $("#left, #right, #hexs, #stage2").hide();
+    $("#left, #right, #hexs, #stage2, #stage3, #stage4, #stage5").hide();
 
     let counterPoints = 0;
-    let stage = 1;
+    let stage = 2;
+
     function countDown() {
  
         var time = 61;
         var id = setInterval(timeFn, 1000);
         function timeFn() {
-          if (time == 0) {
-            clearInterval(id);
-            $("#leftTime").empty().append(time);
-            $(".rect").hide();
-            $("#stage2").show();
-            stage = stage + 1;
-          } else {
-            time--; 
-            if(time <=10){
-                $("#leftTime").addClass("pulseRed");
-            }else{
-                $("#leftTime").removeClass("pulseRed");
+            if(stage == 6 && time == 0){
+                console.log("koniec gry");
+                clearInterval(id);
+                $(".rect").hide();
+            }else if (time == 0) {
+                clearInterval(id);
+                $("#leftTime").empty().append(time);
+                $(".rect").hide();
+                $("#stage"+stage).show();
+                stage= stage+1;
+            } else {
+                time--; 
+                if(time <=10){
+                    $("#leftTime").addClass("pulseRed");
+                }else{
+                    $("#leftTime").removeClass("pulseRed");
             }
             $("#leftTime").empty().append(time);
-         }
+            }
         }
-      }
-      
+    }      
+    
     function showBtns(){
         const allRects = document.querySelectorAll('#hexs > button'); 
         $(".rect").css("opacity", "0").prop("disabled", true);
@@ -54,14 +59,19 @@ document.addEventListener("DOMContentLoaded", () => {
         countDown();
     });
 
-    $("#stage2").on("click", ()=>{
-        console.log("działa");
-        $("#stage2").hide();
-        console.log(stage);
-        showBtns();
-        countDown();
-        $(".rect").show();
-    });
+
+    function stages(zzz){
+        zzz.on("click", ()=>{
+            zzz.hide();
+            showBtns();
+            countDown();
+            $(".rect").show();
+        });
+    }
+
+    stages($("#stage2"));
+    stages($("#stage3"));
+    stages($("#stage4"));
+    stages($("#stage5"));
+ 
 });
-
-

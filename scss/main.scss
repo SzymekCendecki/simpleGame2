@@ -170,7 +170,7 @@ span{
   100%{ color:  #FF6666;}
 }
 
-#stage2{
+#stage2, #stage3, #stage4, #stage5{
   z-index: 100;
   position: absolute;
   top: 45%;
@@ -242,7 +242,7 @@ span{
     font-size: 135%;
   }
 
-  #stage2{
+  #stage2, #stage3, #stage4, #stage5{
     top: 45%;
     left: 40%;
     font-size: 200%;
@@ -276,7 +276,7 @@ span{
     font-size: 170%;
   }
 
-  #stage2{
+  #stage2, #stage3, #stage4, #stage5{
     top: 45%;
     left: 40%;
     font-size: 300%;
