@@ -174,9 +174,11 @@ span{
   z-index: 100;
   position: absolute;
   top: 45%;
-  left: 35%;
   font-family: 'Alfa Slab One', cursive;
   font-size: 150%;
+  width: 25%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 //css dla siatki pól
@@ -194,6 +196,7 @@ span{
   height: 40px;
   border-radius: 50%;
   border: 2px solid black;
+  outline: none;
 }
 
 @for $i from 1 through 50 {
@@ -244,8 +247,11 @@ span{
 
   #stage1, #stage2, #stage3, #stage4, #stage5, #gameOver{
     top: 45%;
-    left: 40%;
     font-size: 200%;
+  }
+
+  footer{
+    font-size: 150%;
   }
 }
 
@@ -278,7 +284,10 @@ span{
 
   #stage1, #stage2, #stage3, #stage4, #stage5, #gameOver{
     top: 45%;
-    left: 40%;
     font-size: 300%;
+  }
+  
+  footer{
+    font-size: 200%;
   }
 }

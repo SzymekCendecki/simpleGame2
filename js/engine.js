@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var stage = 1;
 
     function countDown() {
-        var time = 61;
+        var time = 101;
         var id = setInterval(timeFn, 1000);
         function timeFn() {
             if (time == 0) {
@@ -93,9 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 $(".rect").hide();
 
                 stage = stage + 1;
-
                 $("#stage" + stage).show();
-                console.log(stage);
 
                 if (stage == 6 && time == 0) {
                     clearInterval(id);
@@ -104,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     counterPoints = 0;
                     stage = 1;
                     $("#rightPoints").empty().append(0);
-                    console.log(stage, counterPoints);
                 }
             } else {
                 time--;
@@ -115,6 +112,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 $("#leftTime").empty().append(time);
             }
+        }
+
+        if (stage == 2) {
+            time = time - 10;
+        } else if (stage == 3) {
+            time = time - 20;
+        }if (stage == 4) {
+            time = time - 30;
+        }if (stage == 5) {
+            time = time - 40;
         }
     }
 
@@ -145,41 +152,20 @@ document.addEventListener("DOMContentLoaded", function () {
         $("#left, #right").show();
     });
 
-    $("#stage1").on("click", function () {
-        $("#stage1").hide();
-        $("#hexs, .rect").show();
+    function stages(stage) {
+        stage.on("click", function () {
+            stage.hide();
+            $("#hexs, .rect").show();
+            showBtns();
+            countDown();
+        });
+    }
 
-        showBtns();
-        countDown();
-    });
-
-    $("#stage2").on("click", function () {
-        $("#stage2").hide();
-        $("#hexs, .rect").show();
-        showBtns();
-        countDown();
-    });
-
-    $("#stage3").on("click", function () {
-        $("#stage3").hide();
-        $("#hexs, .rect").show();
-        showBtns();
-        countDown();
-    });
-
-    $("#stage4").on("click", function () {
-        $("#stage4").hide();
-        $("#hexs, .rect").show();
-        showBtns();
-        countDown();
-    });
-
-    $("#stage5").on("click", function () {
-        $("#stage5").hide();
-        $("#hexs, .rect").show();
-        showBtns();
-        countDown();
-    });
+    stages($("#stage1"));
+    stages($("#stage2"));
+    stages($("#stage3"));
+    stages($("#stage4"));
+    stages($("#stage5"));
 
     $("#gameOver").on("click", function () {
         $("#gameOver").hide();
