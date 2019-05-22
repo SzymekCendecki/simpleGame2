@@ -134,8 +134,8 @@ li {
   color: blue;
 }
 
-#left, #right{
-  width: 49%;
+#left, #center, #right{
+  width: 33%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -241,7 +241,7 @@ span{
     height: 60px;
   }
 
-  #left, #right{
+  #left, #center, #right{
     font-size: 135%;
   }
 
@@ -278,7 +278,7 @@ span{
     height: 75px;
   }
 
-  #left, #right{
+  #left, #center, #right{
     font-size: 170%;
   }
 

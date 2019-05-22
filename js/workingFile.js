@@ -1,42 +1,58 @@
 document.addEventListener("DOMContentLoaded", () => {
-    $("#left, #right, #hexs, #stage1, #stage2, #stage3, #stage4, #stage5, #gameOver").hide();
+    $("#left, #center, #right, #hexs, #stage1, #stage2, #stage3, #stage4, #stage5, #gameOver").hide();
 
     let counterPoints = 0;
     let stage = 1;
+    let points = 20;
   
    function countDown() {
-    let time = 101;
+        let time = 101;
         var id = setInterval(timeFn, 1000);
         function timeFn() {
-            if (time == 0) {
+      
+            if ($("#rightPoints").text() == points) {
                 clearInterval(id);
                 $("#leftTime").empty().append(time);
                 $(".rect").hide();
 
                 stage = stage + 1;                
                 $("#stage"+stage).show();
-               
-                if(stage == 6 && time == 0){
+                
+                points = points + 20;
+                $("#centerPoints").empty().append(points);
+
+                if(stage == 6 && time == 0 || $("#rightPoints").text() == 100){
                     clearInterval(id);
                     $(".rect").hide();
                     $("#gameOver").show();
                    counterPoints = 0;
                    stage= 1;
+                   points = 20;
                    $("#rightPoints").empty().append(0);
+                   $("#centerPoints").empty().append(20);
                 }
-
-            } else {
+            } else if(time == 0 && $("#rightPoints").text() < points){
+                clearInterval(id);
+                $(".rect").hide();
+                $("#gameOver").show();
+               counterPoints = 0;
+               stage= 1;
+               points = 20;
+               $("#rightPoints").empty().append(0);
+               $("#centerPoints").empty().append(20);
+            }           
+            else {
                 time--; 
                 if(time <=10){
                     $("#leftTime").addClass("pulseRed");
                 }else{
                     $("#leftTime").removeClass("pulseRed");
-            }
-            $("#leftTime").empty().append(time);
+                }
+                    $("#leftTime").empty().append(time);
             }
         }
-
-        if(stage == 2){
+   
+        if(stage == 2){ 
             time = time-10;
         }else if(stage == 3){
             time = time - 20;
@@ -65,13 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 counterPoints = counterPoints + 1;
                 $("#rightPoints").empty().append(counterPoints);
             }
-        }
+        }             
     } 
 
     $("#start").on("click", ()=>{
         $("#title, #start").hide();
         $("#stage1").show();
-        $("#left, #right").show();   
+        $("#left, #center, #right").show();   
     });
 
     function stages(stage){
@@ -92,5 +108,5 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#gameOver").on("click",()=>{
         $("#gameOver").hide();
         $("#stage1").show();
-     });
+    });
 });

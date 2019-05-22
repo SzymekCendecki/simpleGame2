@@ -78,16 +78,18 @@ module.exports = __webpack_require__(1);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    $("#left, #right, #hexs, #stage1, #stage2, #stage3, #stage4, #stage5, #gameOver").hide();
+    $("#left, #center, #right, #hexs, #stage1, #stage2, #stage3, #stage4, #stage5, #gameOver").hide();
 
     var counterPoints = 0;
     var stage = 1;
+    var points = 20;
 
     function countDown() {
         var time = 101;
         var id = setInterval(timeFn, 1000);
         function timeFn() {
-            if (time == 0) {
+
+            if ($("#rightPoints").text() == points) {
                 clearInterval(id);
                 $("#leftTime").empty().append(time);
                 $(".rect").hide();
@@ -95,14 +97,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 stage = stage + 1;
                 $("#stage" + stage).show();
 
-                if (stage == 6 && time == 0) {
+                points = points + 20;
+                $("#centerPoints").empty().append(points);
+
+                if (stage == 6 && time == 0 || $("#rightPoints").text() == 100) {
                     clearInterval(id);
                     $(".rect").hide();
                     $("#gameOver").show();
                     counterPoints = 0;
                     stage = 1;
+                    points = 20;
                     $("#rightPoints").empty().append(0);
+                    $("#centerPoints").empty().append(20);
                 }
+            } else if (time == 0 && $("#rightPoints").text() < points) {
+                clearInterval(id);
+                $(".rect").hide();
+                $("#gameOver").show();
+                counterPoints = 0;
+                stage = 1;
+                points = 20;
+                $("#rightPoints").empty().append(0);
+                $("#centerPoints").empty().append(20);
             } else {
                 time--;
                 if (time <= 10) {
@@ -149,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#start").on("click", function () {
         $("#title, #start").hide();
         $("#stage1").show();
-        $("#left, #right").show();
+        $("#left, #center, #right").show();
     });
 
     function stages(stage) {
