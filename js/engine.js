@@ -107,8 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     counterPoints = 0;
                     stage = 1;
                     points = 20;
-                    $("#rightPoints").empty().append(0);
-                    $("#centerPoints").empty().append(20);
+                    $("#centerPoints").empty().append(100);
                 }
             } else if (time == 0 && $("#rightPoints").text() < points) {
                 clearInterval(id);
@@ -117,8 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 counterPoints = 0;
                 stage = 1;
                 points = 20;
-                $("#rightPoints").empty().append(0);
-                $("#centerPoints").empty().append(20);
             } else {
                 time--;
                 if (time <= 10) {
@@ -186,6 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#gameOver").on("click", function () {
         $("#gameOver").hide();
         $("#stage1").show();
+        $("#rightPoints").empty().append(0);
+        $("#centerPoints").empty().append(20);
     });
 });
 
