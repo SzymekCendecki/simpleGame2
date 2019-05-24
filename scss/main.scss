@@ -172,10 +172,26 @@ span{
   top: 45%;
   font-family: 'Alfa Slab One', cursive;
   font-size: 150%;
-  width: 25%;
+  width: 50%;
   margin: 0 auto;
   text-align: center;
 }
+
+
+.win2{
+  color: #34cb34;
+  -webkit-text-stroke: 1px #fff;
+  text-shadow: 1px 1px #2eb82e, 2px 2px #29a329, 3px 3px #248f24, 4px 4px #1f7a1f, 5px 5px #1a651a, 6px 6px #155115;
+  margin: 0 auto;
+}
+
+.loose2{
+  color: #ff0000;
+  text-shadow: 1px 1px #e60000, 2px 2px #cc0000, 3px 3px #b30000, 4px 4px #990000, 5px 5px #800000, 6px 6px #660000;
+  -webkit-text-stroke: 1px #000;
+  margin: 0 auto;
+}
+
 
 //css dla siatki pól
 #hexs{

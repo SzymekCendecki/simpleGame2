@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let points = 20;
   
    function countDown() {
-        let time = 101;
+        let time = 100;
         var id = setInterval(timeFn, 1000);
         function timeFn() {
       
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if(stage == 6 && time == 0 || $("#rightPoints").text() == 100){
                     clearInterval(id);
                     $(".rect").hide();
-                    $("#gameOver").show();
+                    $("#gameOver").show().append("<p class='win2'>WYGRANA</p>");
                    counterPoints = 0;
                    stage= 1;
                    points = 20;
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if(time == 0 && $("#rightPoints").text() < points){
                 clearInterval(id);
                 $(".rect").hide();
-                $("#gameOver").show();
+                $("#gameOver").show().append("<p class='loose2'>PRZEGRANA</p>");
                counterPoints = 0;
                stage= 1;
                points = 20;
@@ -50,13 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
    
         if(stage == 2){ 
-            time = time-10;
+            time = time + 1 -10;
         }else if(stage == 3){
-            time = time - 20;
+            time = time + 1- 20;
         }if(stage == 4){
-            time = time - 30;
+            time = time + 1 - 30;
         }if(stage == 5){
-            time = time - 40;
+            time = time + 1 - 40;
         }
     }      
     
@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#gameOver").on("click",()=>{
         $("#gameOver").hide();
         $("#stage1").show();
+        $("#leftTime").empty().append(100).removeClass("pulseRed");
         $("#rightPoints").empty().append(0);
         $("#centerPoints").empty().append(20);
     });
