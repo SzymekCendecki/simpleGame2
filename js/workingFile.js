@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var id = setInterval(timeFn, 1000);
         function timeFn() {
       
-            if ($("#rightPoints").text() == points) {
+            if ($("#rightPoints").text() >= points) {
                 clearInterval(id);
                 $("#leftTime").empty().append(time);
                 $(".rect").hide();
@@ -51,12 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
    
         if(stage == 2){ 
             time = time + 1 -10;
+			$("body").removeClass("bckg1").addClass("bckg2");
         }else if(stage == 3){
             time = time + 1- 20;
-        }if(stage == 4){
+			$("body").removeClass("bckg2").addClass("bckg3");
+        }else if(stage == 4){
             time = time + 1 - 30;
-        }if(stage == 5){
+			$("body").removeClass("bckg3").addClass("bckg4");
+        }else if(stage == 5){
             time = time + 1 - 40;
+			$("body").removeClass("bckg4").addClass("bckg5");
         }
     }      
     
@@ -108,5 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#leftTime").empty().append(100).removeClass("pulseRed");
         $("#rightPoints").empty().append(0);
         $("#centerPoints").empty().append(20);
+		$("body").removeClass("bckg5").addClass("bckg1");
     });
 });
