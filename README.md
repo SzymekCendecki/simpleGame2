@@ -18,5 +18,7 @@ Gra polega na klikaniu w kolorowe kółka. Aby przejść do kolejnego poziomu (s
 
 # inspiracje:
 intro - zmodyfikowany (?) kod ze strony https://codemyui.com/spinning-ring-text-pure-css/
+
 background body - ze strony https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
+
 tooltip przycisku start - zmodyfikowany (?) https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_tooltip
