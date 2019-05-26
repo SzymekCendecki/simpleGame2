@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 $("#stage" + stage).show();
 
                 points = points + 20;
-                $("#centerPoints").empty().append(points);
 
                 if (stage == 6 && time == 0 || $("#rightPoints").text() == 100) {
                     clearInterval(id);
@@ -108,6 +107,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     stage = 1;
                     points = 20;
                     $("#centerPoints").empty().append(100);
+                }
+
+                if ($("#rightPoints").text() >= $("#centerPoints").text()) {
+                    $("#rightPoints").removeClass("pulseRed");
+                    $("#rightPoints").addClass("greenNumber");
+                } else {
+                    $("#rightPoints").addClass("pulseRed");
+                    $("#rightPoints").removeClass("greenNumber");
                 }
             } else if (time == 0 && $("#rightPoints").text() < points) {
                 clearInterval(id);
@@ -119,9 +126,11 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 time--;
                 if (time <= 10) {
+                    $("#leftTime").removeClass("greenNumber");
                     $("#leftTime").addClass("pulseRed");
                 } else {
                     $("#leftTime").removeClass("pulseRed");
+                    $("#leftTime").addClass("greenNumber");
                 }
                 $("#leftTime").empty().append(time);
             }
@@ -129,16 +138,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (stage == 2) {
             time = time + 1 - 10;
+            $("#centerPoints").empty().append(points);
             $("body").removeClass("bckg1").addClass("bckg2");
+            $("#rightPoints").addClass("pulseRed");
+            $("#rightPoints").removeClass("greenNumber");
         } else if (stage == 3) {
             time = time + 1 - 20;
+            $("#centerPoints").empty().append(points);
             $("body").removeClass("bckg2").addClass("bckg3");
+            $("#rightPoints").addClass("pulseRed");
+            $("#rightPoints").removeClass("greenNumber");
         } else if (stage == 4) {
             time = time + 1 - 30;
+            $("#centerPoints").empty().append(points);
             $("body").removeClass("bckg3").addClass("bckg4");
+            $("#rightPoints").addClass("pulseRed");
+            $("#rightPoints").removeClass("greenNumber");
         } else if (stage == 5) {
             time = time + 1 - 40;
+            $("#centerPoints").empty().append(points);
             $("body").removeClass("bckg4").addClass("bckg5");
+            $("#rightPoints").addClass("pulseRed");
+            $("#rightPoints").removeClass("greenNumber");
         }
     }
 

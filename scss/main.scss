@@ -181,6 +181,16 @@ span{
 
 .pulseRed{
   animation: pulseRed 1.5s infinite;
+  -webkit-text-stroke: 1px #000;
+}
+.greenNumber{
+  color: #7FFF00;
+  -webkit-text-stroke: 1px #000;
+}
+
+.goldNumber{
+  color: #FFD700;
+  -webkit-text-stroke: 1px #000;
 }
 
 @keyframes pulseRed{
@@ -252,6 +262,24 @@ span{
   #start{
     width: 25%;
     height: 10%;
+  }
+}
+
+@media screen and (max-height: 480px){
+  #centerTitle{
+    font-size: 60%;
+  }
+}
+
+@media screen and (max-height: 840px){
+  #centerTitle{
+    font-size: 75%;
+  }
+}
+
+@media screen and (min-height: 900px){
+  #centerTitle{
+    font-size: 100%;
   }
 }
 
