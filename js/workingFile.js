@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let points = 20;
   
    function countDown() {
-        let time = 100;
+        let time = 200;
         var id = setInterval(timeFn, 1000);
         function timeFn() {
       
@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 $("#stage"+stage).show();
                 
                 points = points + 20;
-              
+
+            
                 if(stage == 6 && time == 0 || $("#rightPoints").text() == 100){
                     clearInterval(id);
                     $(".rect").hide();
@@ -60,25 +61,33 @@ document.addEventListener("DOMContentLoaded", () => {
    
         if(stage == 2){ 
             time = time + 1 -10;
+            counterPoints=0;
             $("#centerPoints").empty().append(points);
+            $("#rightPoints").text(counterPoints);
             $("body").removeClass("bckg1").addClass("bckg2");
             $("#rightPoints").addClass("pulseRed");
             $("#rightPoints").removeClass("greenNumber");
         }else if(stage == 3){
             time = time + 1- 20;
+            counterPoints=0;
             $("#centerPoints").empty().append(points);
+            $("#rightPoints").text(counterPoints);
             $("body").removeClass("bckg2").addClass("bckg3");
             $("#rightPoints").addClass("pulseRed");
             $("#rightPoints").removeClass("greenNumber");
         }else if(stage == 4){
             time = time + 1 - 30;
+            counterPoints=0;
             $("#centerPoints").empty().append(points);
+            $("#rightPoints").text(counterPoints);
             $("body").removeClass("bckg3").addClass("bckg4");
             $("#rightPoints").addClass("pulseRed");
             $("#rightPoints").removeClass("greenNumber");
         }else if(stage == 5){
             time = time + 1 - 40;
+            counterPoints=0;
             $("#centerPoints").empty().append(points);
+            $("#rightPoints").text(counterPoints);
             $("body").removeClass("bckg4").addClass("bckg5");
             $("#rightPoints").addClass("pulseRed");
             $("#rightPoints").removeClass("greenNumber");
@@ -130,9 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#gameOver").on("click",()=>{
         $("#gameOver").hide();
         $("#stage1").show();
-        $("#leftTime").empty().append(100).removeClass("pulseRed");
+        $("#leftTime").empty().append(200).removeClass("pulseRed");
         $("#rightPoints").empty().append(0);
         $("#centerPoints").empty().append(20);
-		$("body").removeClass("bckg5").addClass("bckg1");
+        $("body").removeClass("bckg5").addClass("bckg1");
+        $("#rightPoints").addClass("pulseRed");
+        $("#rightPoints").removeClass("greenNumber");
     });
 });
