@@ -13,12 +13,10 @@ To druga wersja gry Simply Game. Zmiany w stosunku do poprzedniej wersji
 - zrezygnowano z używania SVG
 
 Na czym polega gra?
-Gra polega na klikaniu w kolorowe kółka. Aby przejść do kolejnego poziomu (stage) trzeba uzbierać odpowiednią ilość punktów, w określonym czasie. Wtedy automatycznie gracz przeniesiony zostanie do kolejnego poziomu. Im wyższy poziom tym mniej czasu jest na uzbieranie punktów. Gdy uzbiera się 100 punktów, gra kończy się, a gracz wygrya. Jeżeli gracz nie uzbiera odpowiedniej ilości punktów, gra kończy się i gracz przegrywa.
+Gra polega na klikaniu w kolorowe kółka. Aby przejść do kolejnego poziomu (stage) trzeba uzbierać odpowiednią ilość punktów, w określonym czasie. Wtedy automatycznie gracz przeniesiony zostanie do kolejnego poziomu. Im wyższy poziom tym mniej czasu jest na uzbieranie punktów, a punkty są zerowane. Gdy uzbiera się na ostatnim poziomie 100 punktów, gra kończy się, a gracz wygrywa. Jeżeli gracz nie uzbiera odpowiedniej ilości punktów, gra kończy się i gracz przegrywa.
 
 
 # inspiracje:
 intro - zmodyfikowany (?) kod ze strony https://codemyui.com/spinning-ring-text-pure-css/
-
 background body - ze strony https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
-
 tooltip przycisku start - zmodyfikowany (?) https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_tooltip
