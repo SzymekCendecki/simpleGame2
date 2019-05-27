@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
     let counterPoints = 0;
     let stage = 1;
     let points = 20;
+
+    function changeColors(x, y){
+        counterPoints=0;
+        $("#centerPoints").empty().append(points);
+        $("#rightPoints").text(counterPoints);
+        $("body").removeClass(x).addClass(y);
+        $("#rightPoints").addClass("pulseRed");
+        $("#rightPoints").removeClass("greenNumber");
+    }
   
    function countDown() {
         let time = 200;
@@ -19,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 $("#stage"+stage).show();
                 
                 points = points + 20;
-
             
                 if(stage == 6 && time == 0 || $("#rightPoints").text() == 100){
                     clearInterval(id);
@@ -61,39 +69,19 @@ document.addEventListener("DOMContentLoaded", () => {
    
         if(stage == 2){ 
             time = time + 1 -10;
-            counterPoints=0;
-            $("#centerPoints").empty().append(points);
-            $("#rightPoints").text(counterPoints);
-            $("body").removeClass("bckg1").addClass("bckg2");
-            $("#rightPoints").addClass("pulseRed");
-            $("#rightPoints").removeClass("greenNumber");
+            changeColors("bckg1", "bckg2");            
         }else if(stage == 3){
             time = time + 1- 20;
-            counterPoints=0;
-            $("#centerPoints").empty().append(points);
-            $("#rightPoints").text(counterPoints);
-            $("body").removeClass("bckg2").addClass("bckg3");
-            $("#rightPoints").addClass("pulseRed");
-            $("#rightPoints").removeClass("greenNumber");
+            changeColors("bckg2", "bckg3");    
         }else if(stage == 4){
             time = time + 1 - 30;
-            counterPoints=0;
-            $("#centerPoints").empty().append(points);
-            $("#rightPoints").text(counterPoints);
-            $("body").removeClass("bckg3").addClass("bckg4");
-            $("#rightPoints").addClass("pulseRed");
-            $("#rightPoints").removeClass("greenNumber");
+            changeColors("bckg3", "bckg4");    
         }else if(stage == 5){
             time = time + 1 - 40;
-            counterPoints=0;
-            $("#centerPoints").empty().append(points);
-            $("#rightPoints").text(counterPoints);
-            $("body").removeClass("bckg4").addClass("bckg5");
-            $("#rightPoints").addClass("pulseRed");
-            $("#rightPoints").removeClass("greenNumber");
+            changeColors("bckg4", "bckg5");    
         }
     }      
-    
+
     function showBtns(){
         const allRects = document.querySelectorAll('#hexs > button'); 
         $(".rect").css("opacity", "0").prop("disabled", true);

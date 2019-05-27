@@ -84,6 +84,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var stage = 1;
     var points = 20;
 
+    function changeColors(x, y) {
+        counterPoints = 0;
+        $("#centerPoints").empty().append(points);
+        $("#rightPoints").text(counterPoints);
+        $("body").removeClass(x).addClass(y);
+        $("#rightPoints").addClass("pulseRed");
+        $("#rightPoints").removeClass("greenNumber");
+    }
+
     function countDown() {
         var time = 200;
         var id = setInterval(timeFn, 1000);
@@ -138,36 +147,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (stage == 2) {
             time = time + 1 - 10;
-            counterPoints = 0;
-            $("#centerPoints").empty().append(points);
-            $("#rightPoints").text(counterPoints);
-            $("body").removeClass("bckg1").addClass("bckg2");
-            $("#rightPoints").addClass("pulseRed");
-            $("#rightPoints").removeClass("greenNumber");
+            changeColors("bckg1", "bckg2");
         } else if (stage == 3) {
             time = time + 1 - 20;
-            counterPoints = 0;
-            $("#centerPoints").empty().append(points);
-            $("#rightPoints").text(counterPoints);
-            $("body").removeClass("bckg2").addClass("bckg3");
-            $("#rightPoints").addClass("pulseRed");
-            $("#rightPoints").removeClass("greenNumber");
+            changeColors("bckg2", "bckg3");
         } else if (stage == 4) {
             time = time + 1 - 30;
-            counterPoints = 0;
-            $("#centerPoints").empty().append(points);
-            $("#rightPoints").text(counterPoints);
-            $("body").removeClass("bckg3").addClass("bckg4");
-            $("#rightPoints").addClass("pulseRed");
-            $("#rightPoints").removeClass("greenNumber");
+            changeColors("bckg3", "bckg4");
         } else if (stage == 5) {
             time = time + 1 - 40;
-            counterPoints = 0;
-            $("#centerPoints").empty().append(points);
-            $("#rightPoints").text(counterPoints);
-            $("body").removeClass("bckg4").addClass("bckg5");
-            $("#rightPoints").addClass("pulseRed");
-            $("#rightPoints").removeClass("greenNumber");
+            changeColors("bckg4", "bckg5");
         }
     }
 

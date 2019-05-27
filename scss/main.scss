@@ -5,34 +5,35 @@
   padding: 0;
 }
 
-.bckg1{
+@mixin bckg {
   background: linear-gradient(217deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
-            linear-gradient(127deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
-            linear-gradient(336deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%);
+              linear-gradient(127deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
+              linear-gradient(336deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%);
+}
+
+@mixin flexWrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bckg1{ 
+  @include bckg;
 }
 
 .bckg2{
- background: linear-gradient(217deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
-            linear-gradient(127deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
-            linear-gradient(336deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%);
+  @include bckg;
 }
 
 .bckg3{
-  background: linear-gradient(217deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
-            linear-gradient(127deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
-            linear-gradient(336deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%);
+  @include bckg;
 }
 
 .bckg4{
-  background: linear-gradient(217deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
-            linear-gradient(127deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
-            linear-gradient(336deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%);
+  @include bckg;
 }
 
 .bckg5{
-  background: linear-gradient(217deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
-            linear-gradient(127deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%),
-            linear-gradient(336deg, rgba(random(255),random(255),random(255),.8), rgba(random(255),random(255),random(255),0) 70.71%);
+  @include bckg;
 }
 
 html, body{
@@ -46,8 +47,7 @@ header, footer{
 }
 
 header{
-  display: flex;
-  flex-wrap: wrap;
+  @include flexWrap;
   justify-content: space-between;
 }
 
@@ -55,8 +55,7 @@ header{
   margin: 0 auto;
   width: 90%;
   height: 80%;
-  display: flex;
-  flex-wrap: wrap;
+  @include flexWrap;
 }
 
 .titleSize{ font-size: 200%; }
@@ -156,15 +155,13 @@ li {
 #left, #center, #right{
   width: 33%;
   height: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  @include flexWrap;
 
   p{
     width: 100%;
     height: 49%;
     font-family: 'Acme', sans-serif;
-    display: flex;
-    flex-wrap: wrap;
+    @include flexWrap;
     align-items: center;
   }
 }
@@ -230,8 +227,7 @@ span{
 #hexs{
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  @include flexWrap;
   justify-content: space-around;
   align-items: stretch;
 }
